@@ -1,0 +1,22 @@
+09/09/2024 
+Author - PERALDI Marie-Agnès 
+
+Title - Programmation avancée 
+
+Trois type de relation au coeur du IoT 
+-Machine to Machine (M2M)
+Quand on déploie une application ce qui est important c'est la sécurité 
+-People to Machine 
+pertinance, autonomie, miniaturisation, privacy 
+-People to Machine to People 
+
+Quatre Valeurs : Optimiser, reduire, améliorer, faire émergé 
+
+Objets connectés - Ces sont les objets auquels l'ajout d'une connexion internet apporte quelques chose en plus 
+
+Protocole Iot interviennent :
+	Niveau liaison de données -> 1 
+	Niveau présentation des données -> 6
+	Niveau applicatif -> 7
+
+Transport des données -> choisir en fonction du projet
