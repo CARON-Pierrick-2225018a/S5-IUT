@@ -1,0 +1,190 @@
+Prise de note 
+
+Exercice 1 
+
+1. ls 
+2. ls -l
+3. ls -a a
+4. ls -r --color=auto
+5. ls -alt
+6. ls -altr
+
+Exercice 2 
+
+1. mkdir envinfo1
+2. mkdir envinfo1/td{3,4,5}
+3. cd envinfo1
+4. mkdir td{6,7,8}
+5. L'une utilise le chemin absolue, l'autre le relatif 
+6. mkdir -p eval/qcm{1,2}
+
+Exercice 3 
+
+1. cd envinfo1/eval/qcm1
+2. cd 
+3. cd -
+Les deux cmd sont différentes l'une renvoie sur le fichier sur lequel on était et l'autre spécifie un chemin précis 
+4. chemin relatif depuis qcm1 : cd ../..
+   chemin absolue cd ~/envinfo1
+5. echo $HOME
+6. chemin absolu (à partir de la racine) : cd /home/admpca/envinfo1/eval
+   chemin absolu (à partir du homedir) : cd ~/envinfo1/eval
+   chemin relatif (à partir de qcm1) : cd ..
+
+Exercice 4 
+
+1. touch controle{1,2,3}.txt
+2. mkdir controles 
+3. mv controles examens 
+4. mv controle{1,2,3}.txt examens/
+5. cd examens
+   cp *.txt ../qcm1/
+6. cd ../qcm1
+   touch question{1,2,3}.txt
+
+Exercice 5 
+
+1. Parce que examens contient des fichiers rmdir marche que pour les répertoires vide 
+2. rm -r ../qcm2
+3. cp -r ../qcm1 ../qcm2 && cd ../qcm2
+4. rm controle*.txt
+5. touch .responses.txt
+6. ls -al
+7. rm -r ../qcm1
+
+Exercice 6
+
+1. cd ..
+   touch qcm1.txt Qcm2.doc QCm3.txt QCM4.doc
+2. ls Q*
+3. ls ??M*
+4. ls *.txt
+5. rm [Qq][Cc][Mm]*.*
+
+Exercice 7
+
+1. cd qcm2
+2. ls -d ../../td{4..8}
+3. rm -r ../../td{4..8}
+4. chemin absolue : ls -laR /home/votre_nom_utilisateur/envinfo1
+   chemin relatif : ls -laR ../../../envinfo1
+5. cd ~/.local/share/Trash/files
+6. cd
+   rm -r envinfo1
+
+Exercice 8 
+
+1. mkdir Linux
+   cd Linux
+2. touch mon_fichier
+   ls -l mon_fichier 
+	-rw-r--r--
+3. a. Lire, modif, éxécut
+	chmod u+rwx mon_fichier
+	chmod 700 mon_fichier
+   b. Lire, modif
+	chmod u+rw,u-x mon_fichier
+	chmod 600 mon_fichier
+   c. lire
+	chmod u+r,u-wx mon_fichier
+	chmod 400 mon_fichier
+4. chmod u+rwx,g+r,o-rwx mon_fichier
+   chmod 740 mon_fichier
+5. Je vais pouvoir voir le fichier mais ni le modifier, ni l'éxécuter. Pour pouvoir lire et modifer le fichier mais ne pas pouvoir supp le répertoire il faut :
+   chmod g+rw mon_fichier
+   chmod g-w Linux/
+
+Exercice 9 
+
+1. mkdir tmp
+   touch tmp/bidon
+   nano tmp/bidon
+2. ln tmp/bidon dhuile
+   cat ~/tmp/bidon
+   cat ~/dhuile
+   Les deux fichiers contiennent la même chose 
+3. ls -l dhuile
+   chmod 640 tmp/bidon
+   ls -l dhuile
+   Comme dhuile est un lien physique il hérite des permissions 
+4. rm tmp/bidon 
+   cat dhuile 
+   huile est un lien physique vers le même inode, la suppression de tmp/bidon n'affecte pas le lien physique tant que le fichier n'est pas supprimé de tous les liens
+5. Refaire les étapes avec un lien symbolique 
+   ln -s tmp/bidon dhuile
+6. Lien physique : pointent vers le même inode, partagent les mêmes perm, la supp d'un lien ne l'affecte pas et ne ppeuvent pas traverser les systèmes de fichiers ou pointer vers des répertoires.
+   Lien symbolique : Contient un chemin vers le fichier cible, peut pointer vers des répertoires et traverser les systèmes de fichiers, les perms ne sont pas significative et la supp d'un fichier rend le lien symbolique inaccessible 
+7. Pour les fichiers spéciaux les liens physiques sont limités en fonction des permissions du système de fichier 
+
+Exercice 10 
+
+1. xeyes, le terminal est occupé on ne peut plus faire de cmd 
+2. ctrl+C cela va arrêter le programme, fermer la fenetre et me rendre le controle du term 
+3. nohup xeyes &
+4. ps aux | grep xeyes 
+   kill <PID>
+5. xeyes ctrl+Z -> ça arrête temporairement xeyes et le place en arrière plan en état suspendu
+6. bg
+   fg
+7. xeyes &
+
+#############################################################################################################################
+
+Exercice A 
+
+1. mkdir system
+   mkdir system/tp1
+2. rmdir system -> on ne peut pas répertoire pas vide 
+   rm -r system 
+3. mkdir -p system/tp1 system/tp2
+4. mv system test5
+5. 1. cp /bin/ls test5/tp1
+   2. cp ~/test5/tp1/ls ~/test5/tp1/ls_copy
+   3. cp ~/test5/tp1/ls ~/test5/tp1/ls_copy
+   4. cp test5/tp1/ls test5/tp1/ls_copy
+6. rm -r ~/test5/tp1 ~/test5/tp2
+
+Exercice B
+
+1. ls -d /*/ et il y a 20 repertoire 
+2. ls 
+    Fichier = test.txt
+   ls ~/test.txt
+
+Exercice C 
+
+1. echo $HOME
+2. ls
+3. echo "Hello World" > mon_fichier
+4. cat mon_fichier
+5. ls 
+6. ls /bin
+7. ls /dev
+8. mkdir ~/Source ~/Data
+9. cd ~/Source
+10. ls
+11. cd
+12. rm -r ~/Source
+13. touch mon_fichier_2
+14. cp ~/Mon_fichier ~/Mon_fichier.old
+    cp ~/Mon_fichier_2 ~/Mon_fichier_2.old
+15. mkdir Old
+16. mv *.old Old/
+17. rm Old/*
+
+Exercice D
+
+1. pwd 
+2. cd /usr/share/doc
+   pwd
+3. cd ..
+   pwd
+4. cd ~
+5. cd -
+6. cd ~ && ls 
+7. ls -a
+8. ls -l /usr
+9. tree /var
+10. ls -lt /var/log ou ls-ltr /var/log si on veut inverser l'ordre 
+
+
